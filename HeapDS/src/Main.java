@@ -1,7 +1,9 @@
+
+
 import java.util.ArrayList;
 
 public class Main {
-    static class Head{
+    static class Heap{
         ArrayList<Integer> a1 = new ArrayList<>();
 
         public void add(int data){ // total time : log n
@@ -17,6 +19,10 @@ public class Main {
                 a1.set(child,a1.get(parent)); // add parent value to child index
 
                 a1.set(parent, temp); // add child value to parent index
+
+                child = parent;
+
+                parent = (child-1)/2;
             }
 
         }
@@ -66,8 +72,23 @@ public class Main {
 
 
         }
+        public boolean isEmpty(){
+            return a1.size()==0;
+        }
     }
-    public static void main(String[] args) {
 
+    public static void main(String[] args) {
+        Heap h = new Heap();
+
+        h.add(5);
+        h.add(4);
+        h.add(3);
+        h.add(2);
+        h.add(1);
+
+        while(!h.isEmpty()){
+            System.out.println(h.peek());
+            h.remove();
+        }
     }
 }
