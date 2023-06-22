@@ -14,18 +14,17 @@ public class FreqElement {
                 hm.put(arr[i],1);
             }
         }
-    int temp = 0;
-    for(var x : hm.values()){
-    if(x>temp){
-        temp = x;
-    }
 
-    }
-        for (Map.Entry<Integer,Integer> entry : hm.entrySet()){
-            if(entry.getValue() == temp){
 
-                System.out.println("Hightest Frequency is : "+entry.getKey()+" "+" - "+entry.getValue());
+        int maxFreq =-1, anskey = -1;
+        for( var e : hm.entrySet()){
+            if(e.getValue()> maxFreq){
+                maxFreq = e.getValue();
+                anskey = e.getKey();
             }
         }
+
+        System.out.println("Max Value : "+anskey +" :: "+maxFreq);
     }
-}
+
+    }
