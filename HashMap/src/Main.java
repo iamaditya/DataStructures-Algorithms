@@ -27,7 +27,7 @@ public class Main {
         hm.put("ayush",16);
         hm.put("abhinav",19);
 
-        System.out.println("Age of aditya is "+hm.get("aditya"));
+            System.out.println("Age of aditya is "+hm.get("aditya"));
         System.out.println("Age of ayush is "+hm.get("ayush"));
         System.out.println("Age of abhinav is "+hm.get("abhinav"));
 //        System.out.println(hm);
