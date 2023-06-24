@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/HashMap/HashMap.iml" filepath="$PROJECT_DIR$/HashMap/HashMap.iml" />
       <module fileurl="file://$PROJECT_DIR$/HeadDS/HeadDS.iml" filepath="$PROJECT_DIR$/HeadDS/HeadDS.iml" />
       <module fileurl="file://$PROJECT_DIR$/HeapDS/HeapDS.iml" filepath="$PROJECT_DIR$/HeapDS/HeapDS.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HashMap/QuestionOnHashMap/QuestionOnHashMap.iml" filepath="$PROJECT_DIR$/HashMap/QuestionOnHashMap/QuestionOnHashMap.iml" />
     </modules>
   </component>
 </project>
