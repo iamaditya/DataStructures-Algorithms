@@ -50,6 +50,8 @@ public class Main {
                 return;
             }
         }
+
+        // approach 2: use single hashmap add all entries in single list , for second string remove correspoinding value of key at end every key will have 0 value if anagram
     }
 }
 
