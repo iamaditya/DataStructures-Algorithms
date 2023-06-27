@@ -1,3 +1,4 @@
+import java.sql.SQLOutput;
 
 class Node{
     int val;
@@ -12,16 +13,27 @@ class Node{
 
 public class Main {
 
+    public static void preorder(Node root){
+        if(root == null){
+            return;
+        }
+
+        System.out.print(root.val+" ");
+        preorder(root.left);
+        preorder(root.right);
+    }
     public static void printNode(Node xtree){
+
+        //pre order traversal
         if(xtree == null){
             return;
         }
         System.out.print(xtree.val+" -> ");
+        if(xtree.left!=null) System.out.print(xtree.left.val+" ");
+        if(xtree.right!=null) System.out.print(xtree.right.val+" ");
+        System.out.println();
         printNode(xtree.left);
         printNode(xtree.right);
-
-        System.out.println("NULL");
-
     }
     public static void main(String[] args) {
       Node tree = new Node(5);
@@ -40,5 +52,7 @@ public class Main {
 //        System.out.println(tree.right.val);
 
         printNode(tree);
+
+        preorder(tree);
     }
 }
