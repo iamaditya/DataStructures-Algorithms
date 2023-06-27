@@ -13,10 +13,15 @@ class Node{
 public class Main {
 
     public static void printNode(Node xtree){
-        if(xtree == null)
-        System.out.println(xtree.val);
+        if(xtree == null){
+            return;
+        }
+        System.out.print(xtree.val+" -> ");
         printNode(xtree.left);
         printNode(xtree.right);
+
+        System.out.println("NULL");
+
     }
     public static void main(String[] args) {
       Node tree = new Node(5);
