@@ -72,6 +72,20 @@ public class FindSizeOfTree{
         return root.val+sumofnode(root.left)+sumofnode(root.right);
     }
 
+    public static void inorder(xNode tree){
+        if(tree == null) return;
+
+        inorder(tree.left);
+        System.out.print(tree.val+" ");
+        inorder(tree.right);
+    }
+    public static void preorder(xNode tree){
+        if(tree == null) return;
+
+        System.out.print(tree.val+" ");
+        preorder(tree.left);
+        preorder(tree.right);
+    }
     public static int returnSizeOfTree(xNode root){
         if(root == null){
             return 0;
@@ -105,5 +119,11 @@ public class FindSizeOfTree{
 
         System.out.println("Product Of Nodes : "+ Product(tree));
 //        sout
+
+        System.out.println("PREORDER : ");
+        preorder(tree);
+        System.out.println();
+        System.out.println("INORDER : ");
+        inorder(tree);
     }
 }
