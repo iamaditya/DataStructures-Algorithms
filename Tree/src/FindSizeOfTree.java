@@ -45,9 +45,9 @@ public class FindSizeOfTree{
     }
     public static int height(xNode root){
         if(root == null) return 0;
-        if(root.left == null && root.right == null){
-            return 0;
-        }
+//        if(root.left == null && root.right == null){
+//            return 0;
+//        }
 
         return 1 + Math.max(height(root.left), height(root.right));
     }
@@ -71,12 +71,44 @@ public class FindSizeOfTree{
 
         return root.val+sumofnode(root.left)+sumofnode(root.right);
     }
+    public static void postorder(xNode tree){
+        if(tree == null) return;
 
+        postorder(tree.left);
+        postorder(tree.right);
+        System.out.print(tree.val+" ");
+    }
+    public static void inorder(xNode tree){
+        if(tree == null) return;
+
+        inorder(tree.left);
+        System.out.print(tree.val+" ");
+        inorder(tree.right);
+    }
+    public static void preorder(xNode tree){
+        if(tree == null) return;
+
+        System.out.print(tree.val+" ");
+        preorder(tree.left);
+        preorder(tree.right);
+    }
     public static int returnSizeOfTree(xNode root){
         if(root == null){
             return 0;
         }
         return 1 + returnSizeOfTree(root.left)+ returnSizeOfTree(root.right);
+    }
+
+
+    public static void nthLevel(xNode root, int n){
+        if(root == null) return;
+
+        if(n == 1){
+            System.out.print(root.val+ " ");
+        }
+
+        nthLevel(root.left, n -1);
+        nthLevel(root.right , n-1);
     }
     public static void main(String[] args) {
         xNode tree = new xNode(2);
@@ -85,13 +117,14 @@ public class FindSizeOfTree{
         xNode tree3 = new xNode(4);
         xNode tree4 = new xNode(2);
         xNode tree5 = new xNode(3);
+        xNode tree6 = new xNode(9);
 
         tree.left = tree1;
         tree.right = tree2;
         tree1.left = tree3;
         tree1.right = tree5;
         tree2.right = tree4;
-
+        tree2.left = tree6;
         countSize(tree);
         System.out.println(size);
         System.out.println("size : "+returnSizeOfTree(tree));
@@ -105,5 +138,28 @@ public class FindSizeOfTree{
 
         System.out.println("Product Of Nodes : "+ Product(tree));
 //        sout
+
+        System.out.println("PREORDER : ");
+        preorder(tree);
+        System.out.println();
+        System.out.println("INORDER : ");
+        inorder(tree);
+        System.out.println();
+        System.out.println("POSTORDER : ");
+        postorder(tree);
+        System.out.println();
+        System.out.println("3Rd Level : ");
+        nthLevel(tree, 3);
+
+        System.out.println();
+
+        System.out.println("EACH LEVEL BFS ");
+
+        int levels = height(tree);
+
+        for (int i=1;i<=levels;i++){
+            nthLevel(tree,i);
+            System.out.println();
+        }
     }
 }
