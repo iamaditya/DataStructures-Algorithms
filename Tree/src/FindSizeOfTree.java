@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.*;
 class xNode{
     int val;
@@ -154,6 +155,31 @@ public class FindSizeOfTree{
 
         return arr;
     }
+
+
+    public static ArrayList<Integer> DFSPre(xNode root, ArrayList<Integer> arr) {
+        if (root == null) return arr;
+
+        Stack<xNode> stack = new Stack<>();
+        stack.push(root);
+
+        while (stack.size()>0) {
+            xNode temp = stack.pop();
+            arr.add(temp.val);
+
+            if (temp.left != null) {
+                stack.push(temp.left);
+            }
+
+            if (temp.right != null) {
+                stack.push(temp.right);
+            }
+        }
+
+        return arr;
+    }
+
+
     public static void main(String[] args) {
         xNode tree = new xNode(2);
         xNode tree1 = new xNode(5);
@@ -216,6 +242,13 @@ public class FindSizeOfTree{
         a1 = DFS(tree,a1);
 
         System.out.println(a1);
+        System.out.println("DFSPre using Stack ");
+
+        ArrayList<Integer> a2 = new ArrayList<>();
+
+        a2 = DFSPre(tree,a2);
+
+        System.out.println(a2);
     }
 
 }
