@@ -114,20 +114,45 @@ public class FindSizeOfTree{
     public static void BFS(xNode root){
         Queue<xNode> q1 = new LinkedList<>();
 
-        if(root != null){
-            q1.add(root);
-        }else{
-            return;
-        }
+        if(root == null) return;
+
+        q1.add(root);
 
 
         while(q1.size()>0){
+
+            // add only if they are not null
+
             xNode temp = q1.peek();
             if(temp.left!= null) q1.add(temp.left);
             if(temp.right!= null) q1.add(temp.right);
             System.out.print(temp.val+" ");
             q1.remove();
         }
+    }
+
+
+    public static ArrayList<Integer> DFS(xNode root , ArrayList<Integer> arr){
+        if(root == null) return arr;
+
+        Stack<xNode> alist = new Stack<>();
+
+        alist.push(root);
+
+        while(alist.size()>0){
+            xNode temp = alist.peek();
+
+            if(temp.left!=null){
+                alist.push(temp.left);
+                temp.left = null; // IMP LINE
+            }else{
+                alist.pop();
+                arr.add(temp.val);
+                if(temp.right!=null) alist.push(temp.right);
+            }
+        }
+
+        return arr;
     }
     public static void main(String[] args) {
         xNode tree = new xNode(2);
@@ -184,5 +209,13 @@ public class FindSizeOfTree{
 
         System.out.println("BFS Using queue");
         BFS(tree);
+        System.out.println();
+        System.out.println("DFS using Stack ");
+        ArrayList<Integer> a1 = new ArrayList<>();
+
+        a1 = DFS(tree,a1);
+
+        System.out.println(a1);
     }
+
 }
