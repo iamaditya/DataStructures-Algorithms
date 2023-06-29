@@ -1,4 +1,4 @@
-
+import java.util.*;
 class xNode{
     int val;
     xNode left;
@@ -110,6 +110,25 @@ public class FindSizeOfTree{
         nthLevel(root.left, n -1);
         nthLevel(root.right , n-1);
     }
+
+    public static void BFS(xNode root){
+        Queue<xNode> q1 = new LinkedList<>();
+
+        if(root != null){
+            q1.add(root);
+        }else{
+            return;
+        }
+
+
+        while(q1.size()>0){
+            xNode temp = q1.peek();
+            if(temp.left!= null) q1.add(temp.left);
+            if(temp.right!= null) q1.add(temp.right);
+            System.out.print(temp.val+" ");
+            q1.remove();
+        }
+    }
     public static void main(String[] args) {
         xNode tree = new xNode(2);
         xNode tree1 = new xNode(5);
@@ -161,5 +180,9 @@ public class FindSizeOfTree{
             nthLevel(tree,i);
             System.out.println();
         }
+
+
+        System.out.println("BFS Using queue");
+        BFS(tree);
     }
 }
