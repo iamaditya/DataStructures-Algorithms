@@ -24,6 +24,33 @@ public class Main {
 
         return found;
     }
+
+
+    public static Node addBT(Node root, int val){
+        if(root == null) return new Node(val);
+
+        if(root.val > val){
+            if(root.left == null){
+                 root.left = new Node(val);
+            }else{
+                addBT(root.left, val);
+            }
+        }else{
+            if(root.right == null)  root.right = new Node(val);
+            else addBT(root.right, val);
+
+        }
+
+        return root;
+
+    }
+    public static void preorder(Node root){
+        if(root == null) return;
+        System.out.print(root.val+ " ");
+        preorder(root.left);
+        preorder(root.right);
+    }
+
     public static void main(String[] args) {
         Node tree1 = new Node(35);
         Node tree2 = new Node(30);
@@ -39,8 +66,11 @@ public class Main {
         tree3.left = tree6;
         tree3.right = tree7;
 
-        int key = 31;
+        int key = 45;
         boolean ans = findinBT(tree1, key );
         System.out.println(ans);
+        Node x = addBT(tree1, 12);
+        Node y = addBT(tree1, 27);
+        preorder(tree1);
     }
 }
