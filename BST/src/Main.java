@@ -50,6 +50,44 @@ public class Main {
         preorder(root.left);
         preorder(root.right);
     }
+    public static void inorder(Node root){
+        if(root == null) return;
+        inorder(root.left);
+        System.out.print(root.val+ " ");
+        inorder(root.right);
+    }
+    public static void postorder(Node root){
+        if(root == null) return;
+        postorder(root.left);
+        postorder(root.right);
+        System.out.print(root.val+ " ");
+    }
+
+    public static void delete(Node root, int target){
+        if(root == null) return;
+
+        if(root.val > target){
+            if(root.left == null){ // node not exists
+                return;
+            }
+            if(root.left.val == target){
+                Node l = root.left; // node to be deleted
+                if(l.left == null && l.right == null) root.left = null; // 0 child
+                else if(l.left == null || l.right == null){ // 1 child
+                    if(l.left!= null) root.left = l.left;
+                    else root.left = l.right;
+                }
+            }else delete(root.left, target);
+        }else{
+            if(root.right == null) return;
+            if(root.right.val == target){
+                Node r = root.right; // node to be deleted
+                if(r.left == null && r.right == null) root.right = null;
+                else if(r.left!=null) root.right = r.left;
+                else root.right = r.right;
+            }else delete(root.right, target);
+        }
+    }
 
     public static void main(String[] args) {
         Node tree1 = new Node(35);
@@ -71,6 +109,21 @@ public class Main {
         System.out.println(ans);
         Node x = addBT(tree1, 12);
         Node y = addBT(tree1, 27);
+        System.out.println("PREORDER : ");
         preorder(tree1);
+        System.out.println();
+        System.out.println("INORDER : ");
+
+        inorder(tree1);
+
+        System.out.println();
+        System.out.println("POSTORDER : ");
+
+        postorder(tree1);
+
+        delete(tree1,12);
+        delete(tree1,25);
+        System.out.println("\nINORDER : ");
+        inorder(tree1);
     }
 }
