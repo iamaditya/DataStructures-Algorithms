@@ -76,15 +76,42 @@ public class Main {
                 else if(l.left == null || l.right == null){ // 1 child
                     if(l.left!= null) root.left = l.left;
                     else root.left = l.right;
+                }else {
+                    Node cur = l;
+
+                    Node pred = cur.left;
+                    while (pred != null) pred = pred.right;
+
+                    delete(root, pred.val);
+                    pred.left = cur.left;
+//                    cur.left = pred.left;
+//                    cur.right = pred.right;
+                    pred.right = cur.right;
+                    root.left = pred;
                 }
             }else delete(root.left, target);
         }else{
             if(root.right == null) return;
-            if(root.right.val == target){
+            if(root.right.val == target) {
                 Node r = root.right; // node to be deleted
-                if(r.left == null && r.right == null) root.right = null;
-                else if(r.left!=null) root.right = r.left;
-                else root.right = r.right;
+                if (r.left == null && r.right == null) root.right = null;
+                else if(r.left == null || r.right == null) {
+                    if (r.left != null) root.right = r.left;
+                    else root.right = r.right;
+                }else{
+                    Node cur = r;
+
+                    Node pred = cur.left;
+                    while (pred != null) pred = pred.right;
+
+                    delete(root, pred.val);
+                    pred.left = cur.left;
+//                    cur.left = pred.left;
+                    pred.right = cur.right;
+//                    cur.right = pred.right;
+                    root.right = pred;
+
+            }
             }else delete(root.right, target);
         }
     }
