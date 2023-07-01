@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 class Node{
     int val;
 
@@ -116,6 +118,18 @@ public class Main {
         }
     }
 
+
+    public static void rightView(Node root, ArrayList<Integer> ds, int dep){
+        if(root == null) return;
+
+        if(dep == ds.size()){
+            ds.add(root.val);
+        }
+
+        rightView(root.right, ds, dep+1);
+        rightView(root.left, ds, dep+1);
+    }
+
     public static void main(String[] args) {
         Node tree1 = new Node(35);
         Node tree2 = new Node(30);
@@ -152,5 +166,10 @@ public class Main {
         delete(tree1,25);
         System.out.println("\nINORDER : ");
         inorder(tree1);
+        System.out.println("\nRIGHT VIEW : ");
+        ArrayList<Integer> result = new ArrayList<>();
+        int depth = 0;
+        rightView(tree1,result, depth);
+        System.out.println(result);
     }
 }
