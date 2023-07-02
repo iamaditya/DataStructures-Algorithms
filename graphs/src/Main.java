@@ -12,6 +12,24 @@ public class Main {
         }
     }
 
+    public static void BFS(ArrayList<Edge> graph[], Boolean vis[],int start){
+        Queue<Integer> q = new LinkedList<>();
+        q.add(start);
+
+        while(q.size()>0){
+            int curr = q.remove();
+            if(!vis[curr]){
+                System.out.print(curr+" ");
+                vis[curr] = true;
+
+                for (int i=0;i<graph[curr].size();i++){
+                    Edge e = graph[curr].get(i);
+                    q.add(e.des);
+                }
+            }
+        }
+
+    }
     public static void createGraph(ArrayList<Edge> graph[]){
         for (int i=0;i<graph.length;i++){
             graph[i] = new ArrayList<Edge>();
@@ -41,6 +59,18 @@ public class Main {
         System.out.println("Neighbours of V: 2");
 
         neighbours(graph,2);
+        System.out.println("BFS GRAPH : ");
+
+        Boolean vis[] = new Boolean[V];
+
+        Arrays.fill(vis, false);
+
+        for (int i =0;i<V;i++){
+            if(!vis[i]){
+                BFS(graph,vis,i);
+            }
+        }
+//        BFS(graph,V);
 
     }
 }
