@@ -1,5 +1,5 @@
 import java.util.*;
-
+// for un-weighted graph
 public class Main {
 
     static class Edge{
