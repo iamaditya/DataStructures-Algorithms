@@ -25,9 +25,22 @@ public class Main {
         graph[3].add(new Edge(3,1));
         graph[3].add(new Edge(3,2));
     }
+    public static void neighbours(ArrayList<Edge> graph[], int v){
+        for (int i=0;i<graph[v].size();i++){
+            Edge e = graph[v].get(i);
+
+            System.out.println(e.des+" ");
+        }
+    }
+
     public static void main(String[] args) {
         int V = 4;
         ArrayList<Edge> graph[] = new ArrayList[V];
         createGraph(graph);
+
+        System.out.println("Neighbours of V: 2");
+
+        neighbours(graph,2);
+
     }
 }
