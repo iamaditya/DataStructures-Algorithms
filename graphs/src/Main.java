@@ -12,24 +12,7 @@ public class Main {
         }
     }
 
-    public static void BFS(ArrayList<Edge> graph[], Boolean vis[],int start){
-        Queue<Integer> q = new LinkedList<>();
-        q.add(start);
 
-        while(q.size()>0){
-            int curr = q.remove();
-            if(!vis[curr]){
-                System.out.print(curr+" ");
-                vis[curr] = true;
-
-                for (int i=0;i<graph[curr].size();i++){
-                    Edge e = graph[curr].get(i);
-                    q.add(e.des);
-                }
-            }
-        }
-
-    }
     public static void createGraph(ArrayList<Edge> graph[]){
         for (int i=0;i<graph.length;i++){
             graph[i] = new ArrayList<Edge>();
@@ -48,6 +31,38 @@ public class Main {
             Edge e = graph[v].get(i);
 
             System.out.println(e.des+" ");
+        }
+    }
+
+    public static void BFS(ArrayList<Edge> graph[], Boolean vis[],int start){
+        Queue<Integer> q = new LinkedList<>();
+        q.add(start);
+
+        while(q.size()>0){
+            int curr = q.remove();
+            if(!vis[curr]){
+                System.out.print(curr+" ");
+                vis[curr] = true;
+
+                for (int i=0;i<graph[curr].size();i++){
+                    Edge e = graph[curr].get(i);
+                    q.add(e.des);
+                }
+            }
+        }
+
+    }
+
+
+    public static void DFS(ArrayList<Edge> graph[], int curr, boolean vis[]){
+        System.out.print(curr+" ");
+
+        vis[curr] = true;
+        for (int i=0;i<graph[curr].size();i++){
+            Edge e = graph[curr].get(i);
+            if(vis[e.des] == false){
+                DFS(graph,e.des,vis);
+            }
         }
     }
 
@@ -70,7 +85,17 @@ public class Main {
                 BFS(graph,vis,i);
             }
         }
-//        BFS(graph,V);
+
+        System.out.println("DFS GRAPH : ");
+        boolean newvis[] = new boolean[V];
+        Arrays.fill(newvis,false);
+
+        for (int i=0;i<V;i++){
+            if(newvis[i] == false){
+                DFS(graph, i, newvis);
+            }
+        }
+
 
     }
 }
