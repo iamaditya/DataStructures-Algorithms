@@ -1,5 +1,5 @@
 # DataStructures-Algorithm
-
+*AdityaSharma*
 This repository contains various data structures and algorithms implemented in different programming languages. Each directory represents a specific topic or data structure along with its corresponding implementation.
 
 Feel free to explore the code and use it as a reference or learning resource. Contributions are also welcome if you have any improvements or additional implementations to share.
