@@ -1,3 +1,4 @@
+import java.sql.SQLOutput;
 import java.util.*;
 
 public class AdjacencyLIst {
@@ -20,8 +21,19 @@ public class AdjacencyLIst {
         }
 
     }
+
+    public static void dfs(int node, boolean vis[], ArrayList<ArrayList<Integer>> adj){
+        vis[node] = true;
+        System.out.print(node+" ");
+
+        for (var x : adj.get(node)){
+            if(vis[x] == false){
+                dfs(x,vis,adj);
+            }
+        }
+    }
     public static void main(String[] args) {
-        int n = 3, m = 3;
+        int n = 9, m = 9;
 
         ArrayList<ArrayList<Integer>> adj = new ArrayList<ArrayList<Integer>>();
 
@@ -33,17 +45,30 @@ public class AdjacencyLIst {
 
 //        edge 1 --- 2
         adj.get(1).add(2);
+        adj.get(1).add(6);
         adj.get(2).add(1);
+        adj.get(6).add(1);
+        adj.get(6).add(7);
+        adj.get(6).add(9);
+        adj.get(9).add(6);
+        adj.get(7).add(6);
 
 //        edge 2 -- 3
 
         adj.get(2).add(3);
+        adj.get(2).add(4);
+        adj.get(4).add(2);
+        adj.get(5).add(4);
+        adj.get(4).add(5);
+        adj.get(5).add(8);
+        adj.get(8).add(5);
+        adj.get(8).add(7);
+        adj.get(7).add(8);
         adj.get(3).add(2);
 
 //        edge 1 -- 3
 
-        adj.get(1).add(3);
-        adj.get(3).add(1);
+
         System.out.println("UNDIRECTED GRAPH : ");
         for (int i=1;i<=n;i++){
             for (int j=0;j<adj.get(i).size();j++){
@@ -74,8 +99,14 @@ public class AdjacencyLIst {
             System.out.println();
         }
 
-        System.out.println("BFS of graph : ");
+        System.out.println("BFS of Graph : ");
         bfs(adj,n);
+
+        int node = 1;
+        boolean vis[] = new boolean[n+1];
+
+        System.out.println("\nDFS of Graph : ");
+        dfs(node, vis, adj);
     }
 
 }
