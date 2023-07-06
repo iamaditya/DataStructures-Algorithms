@@ -110,3 +110,59 @@ public class AdjacencyLIst {
     }
 
 }
+// GFG solution for Cycle Detection
+
+
+class Solution {
+    // Function to detect cycle in an undirected graph.
+    static class Pair{
+        int first;
+        int second;
+
+        Pair(int first, int second){
+            this.first = first;
+            this.second = second;
+        }
+    }
+
+    public static boolean cycle(int node, boolean[] vis, ArrayList<ArrayList<Integer>> adj){
+
+        Queue<Pair> q= new LinkedList<>();
+
+        vis[node] = true;
+
+        q.add(new Pair(node , -1));
+
+
+        while(q.size()>0){
+
+            int xnode = q.peek().first;
+            int parent  = q.peek().second;
+
+            q.remove();
+
+            for(int x: adj.get(xnode)){
+                if(vis[x] == false){
+                    vis[x] = true;
+                    q.add(new Pair(x,xnode));
+                }else if(parent!=x){
+                    return true;
+                }
+            }
+
+        }
+        return false;
+    }
+    public boolean isCycle(int V, ArrayList<ArrayList<Integer>> adj) {
+
+        boolean vis[] = new boolean[V];
+
+        for(int i=0;i<V;i++){
+            if(vis[i] == false){
+                if(cycle(i, vis, adj)) return true;
+            }
+        }
+        return false;
+    }
+
+}
