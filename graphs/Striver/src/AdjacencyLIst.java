@@ -125,7 +125,7 @@ class Solution {
         }
     }
 
-    public static boolean cycle(int node, boolean[] vis, ArrayList<ArrayList<Integer>> adj){
+    public static boolean cyclebfs(int node, boolean[] vis, ArrayList<ArrayList<Integer>> adj){
 
         Queue<Pair> q= new LinkedList<>();
 
@@ -153,13 +153,25 @@ class Solution {
         }
         return false;
     }
+    public static boolean cycledfs(int node, int parent, boolean vis[], ArrayList<ArrayList<Integer>> adj){
+        vis[node] = true;
+
+        for(var x : adj.get(node)){
+            if(vis[x] == false){
+                if(cycledfs(x, node, vis, adj) == true) return true;
+            }else if(x!= parent){
+                return true;
+            }
+        }
+        return false;
+    }
     public boolean isCycle(int V, ArrayList<ArrayList<Integer>> adj) {
 
         boolean vis[] = new boolean[V];
 
         for(int i=0;i<V;i++){
             if(vis[i] == false){
-                if(cycle(i, vis, adj)) return true;
+                if(cyclebfs(i, vis, adj)) return true;
             }
         }
         return false;
