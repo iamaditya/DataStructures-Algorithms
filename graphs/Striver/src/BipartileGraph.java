@@ -13,8 +13,26 @@ public class BipartileGraph {
 
 }
 
-class xSolution {
+class Solution
 
+{
+
+    public static boolean bipDFS(int node, int col, int[] color, ArrayList<ArrayList<Integer>> adj ){
+
+        color[node] = col;
+
+        for(var x : adj.get(node)){
+            if(color[x] == -1){
+                if(bipDFS(x,1-col,color,adj) == false) return false;
+            }else if(color[x] == color[node]){
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    // using BFS
     public static boolean bip(int node, ArrayList<ArrayList<Integer>> adj, int[] color){
 
         color[node] = 0;
@@ -45,9 +63,17 @@ class xSolution {
 
         Arrays.fill(color,-1);
 
+//         using BFS (Breath First Search)
+         for(int i=0;i<V;i++){
+             if(color[i] == -1){
+                 if(bip(i,adj, color) == false) return false;
+             }
+         }
+
+        // using DFS (Depth First Search)
         for(int i=0;i<V;i++){
             if(color[i] == -1){
-                if(bip(i,adj, color) == false) return false;
+                if(bipDFS(i, 0,color, adj) == false) return false;
             }
         }
 
