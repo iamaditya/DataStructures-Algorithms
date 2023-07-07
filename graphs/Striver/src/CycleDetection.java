@@ -83,3 +83,50 @@ public class CycleDetection {
         System.out.println("Is cycle : "+cycle);
     }
 }
+
+
+
+// Cycle Detection in Directed Graph
+
+
+
+class qSolution {
+    // Function to detect cycle in a directed graph.
+
+
+
+    public static boolean dfs(int node, int[] vis, int[] pathvis, ArrayList<ArrayList<Integer>>adj){
+
+        vis[node] = 1;
+        pathvis[node] = 1;
+
+        for(var x : adj.get(node)){
+            if(vis[x] == 0){
+                if(dfs(x,vis,pathvis,adj) == true) return true;
+            }else if(pathvis[x] == 1) return true;
+        }
+
+        pathvis[node] = 0;
+        return false;
+
+    }
+
+
+    public boolean isCyclic(int V, ArrayList<ArrayList<Integer>> adj) {
+        int vis[] = new int[V];
+
+        int pathvis[] = new int[V];
+
+        Arrays.fill(vis, 0);
+        Arrays.fill(pathvis,0);
+
+
+        for(int i=0;i<V;i++){
+            if(vis[i] == 0){
+                if(dfs(i, vis, pathvis, adj)== true) return true;
+            }
+        }
+
+        return false;
+    }
+}
