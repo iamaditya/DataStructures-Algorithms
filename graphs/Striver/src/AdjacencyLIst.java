@@ -113,7 +113,7 @@ public class AdjacencyLIst {
 // GFG solution for Cycle Detection
 
 
-class Solution {
+class ySolution {
     // Function to detect cycle in an undirected graph.
     static class Pair{
         int first;
