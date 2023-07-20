@@ -31,6 +31,11 @@ public static void printList(Node head){
         System.out.print(head.data+" ");
 
     }
+    public static int len(Node head){
+        if(head == null) return 0;
+
+        return 1+(len(head.next));
+    }
 public static int length(Node head){
         int count = 0;
 
@@ -58,5 +63,7 @@ public static int length(Node head){
         int len = length(head);
 
         System.out.println("\nLength : "+len);
+        int xlem = len(head);
+        System.out.println("\nUSING RECURSION : "+xlem);
     }
 }
