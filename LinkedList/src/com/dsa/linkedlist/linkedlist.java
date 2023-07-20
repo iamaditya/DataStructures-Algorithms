@@ -23,7 +23,17 @@ public class linkedlist {
             tail = temp; // then move tail
 
         }
+        void addFirst(int data){
+            if(head == null){
+                addLast(data);
+                return;
+            }else{
+                Node temp = new Node(data);
 
+                temp.next = head;
+                head = temp;
+            }
+        }
         void printList(){
             Node temp = head;
 
@@ -34,16 +44,20 @@ public class linkedlist {
         }
 
     public static void main(String[] args) {
-    linkedlist l1 = new linkedlist();
+        linkedlist l1 = new linkedlist();
 
-    l1.addLast(5);
-    l1.addLast(4);
-    l1.addLast(3);
-    l1.addLast(2);
-    l1.addLast(1);
-    l1.addLast(0);
+        l1.addFirst(6);
+        l1.addLast(5);
+        l1.addLast(4);
+        l1.addLast(3);
+        l1.addLast(2);
+        l1.addLast(1);
+        l1.addLast(0);
 
-    l1.printList();
+        l1.printList();
+        System.out.println();
+        l1.addFirst(7);
+        l1.printList();
     }
 
 
