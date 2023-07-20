@@ -1,6 +1,6 @@
 package com.dsa.linkedlist;
 
-public class llist {
+public class linkedlist {
     static class Node{
         int data;
         Node next;
@@ -9,18 +9,19 @@ public class llist {
             this.data = data;
         }
     }
-
-    public static class linkedlist{
-        Node head = null;
-        Node tail = null;
+        Node head ;
+        Node tail ;
         void addLast(int data){
             Node temp = new Node(data);
             if(head == null){
                 head = temp;
+
             }else{
-                tail.next = temp;
+                tail.next = temp; // earlier tail was pointing to 5 so then 5's next pointing to 4
+//                that means (5) node.next = temp
             }
-            tail = temp;
+            tail = temp; // then move tail
+
         }
 
         void printList(){
@@ -31,9 +32,10 @@ public class llist {
                 temp = temp.next;
             }
         }
-    }
+
     public static void main(String[] args) {
     linkedlist l1 = new linkedlist();
+
     l1.addLast(5);
     l1.addLast(4);
     l1.addLast(3);
@@ -43,4 +45,6 @@ public class llist {
 
     l1.printList();
     }
+
+
 }
