@@ -41,8 +41,29 @@ public class linkedlist {
                 System.out.print(temp.data+" ");
                 temp = temp.next;
             }
+            System.out.println();
         }
 
+        void insertatpos(int pos, int data) {
+            if(pos == 1){
+                addFirst(data);
+            }
+            else{
+                Node temp = head;
+                Node newNode = new Node(data);
+
+                for (int i = 1; i < pos -1; i++) {
+                    temp = temp.next;
+                }
+
+                if(temp.next!=null){
+                    newNode.next = temp.next;
+                    temp.next = newNode;
+                }else{
+                    addLast(data);
+                }
+            }
+        }
     public static void main(String[] args) {
         linkedlist l1 = new linkedlist();
 
@@ -57,6 +78,11 @@ public class linkedlist {
         l1.printList();
         System.out.println();
         l1.addFirst(7);
+        l1.printList();
+
+        l1.insertatpos(3,8);
+        l1.insertatpos(1,10);
+        l1.insertatpos(11,69);
         l1.printList();
     }
 
