@@ -31,7 +31,20 @@ public static void printList(Node head){
         System.out.print(head.data+" ");
 
     }
+    public static int len(Node head){
+        if(head == null) return 0;
 
+        return 1+(len(head.next));
+    }
+public static int length(Node head){
+        int count = 0;
+
+        while(head!=null) {
+            count++;
+            head = head.next;
+        }
+        return count;
+}
     public static void main(String[] args) {
         Node head;
         Node n1 = new Node(5);
@@ -47,5 +60,10 @@ public static void printList(Node head){
         printList(head);
         System.out.println("\nUsing recursion TEST");
         printTest(head);
+        int len = length(head);
+
+        System.out.println("\nLength : "+len);
+        int xlem = len(head);
+        System.out.println("\nUSING RECURSION : "+xlem);
     }
 }
