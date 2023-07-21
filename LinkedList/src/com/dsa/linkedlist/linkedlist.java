@@ -64,6 +64,45 @@ public class linkedlist {
                 }
             }
         }
+
+        int getAt(int pos){
+            Node temp = head;
+
+            for(int i=1;i<=pos-1;i++){
+                temp =temp.next;
+            }
+            return temp.data; 
+        }
+
+        void addLastHead(int data){
+            Node temp = head;
+            Node newNode = new Node(data);
+            while(temp.next!=null){
+                temp = temp.next;
+            }
+
+            temp.next = newNode;
+            tail = newNode;
+        }
+
+        void deleteatPos(int pos){
+            Node    temp   =   head;
+
+            if(pos == 1){
+                head = head.next;
+                return;
+            }
+            for(int i = 1;i<pos-1;i++){
+                temp = temp.next;
+            }
+
+            if(temp.next.next == null){
+                tail = temp;
+            }
+
+            temp.next = temp.next.next;
+
+        }
     public static void main(String[] args) {
         linkedlist l1 = new linkedlist();
 
@@ -84,7 +123,18 @@ public class linkedlist {
         l1.insertatpos(1,10);
         l1.insertatpos(11,69);
         l1.printList();
-    }
+        System.out.println("Data at pos 8 : "+l1.getAt(8));
+        l1.addLastHead(12);
+        l1.printList();
+        System.out.println(l1.head.data+" "+l1.tail.data);
+        l1.deleteatPos(3);
+        l1.printList();
+        l1.deleteatPos(1);
+        l1.printList();
+        System.out.println(l1.tail.data);
+        System.out.println(l1.head.data);
+        }
+
 
 
 }
