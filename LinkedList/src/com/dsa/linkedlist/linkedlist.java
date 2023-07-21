@@ -103,38 +103,50 @@ public class linkedlist {
             temp.next = temp.next.next;
 
         }
-    public static void main(String[] args) {
-        linkedlist l1 = new linkedlist();
 
-        l1.addFirst(6);
-        l1.addLast(5);
-        l1.addLast(4);
-        l1.addLast(3);
-        l1.addLast(2);
-        l1.addLast(1);
-        l1.addLast(0);
+        void pointer(int n){
+            Node fast = head;
+            Node slow = head;
 
-        l1.printList();
-        System.out.println();
-        l1.addFirst(7);
-        l1.printList();
-
-        l1.insertatpos(3,8);
-        l1.insertatpos(1,10);
-        l1.insertatpos(11,69);
-        l1.printList();
-        System.out.println("Data at pos 8 : "+l1.getAt(8));
-        l1.addLastHead(12);
-        l1.printList();
-        System.out.println(l1.head.data+" "+l1.tail.data);
-        l1.deleteatPos(3);
-        l1.printList();
-        l1.deleteatPos(1);
-        l1.printList();
-        System.out.println(l1.tail.data);
-        System.out.println(l1.head.data);
+            for(int i=1;i<=n;i++){
+                fast = fast.next;
+            }
+            while(fast!=null){
+                fast = fast.next;
+                slow = slow.next;
+            }
+            System.out.println(slow.data+"< - slow ");
         }
+    public static void main(String[] args) {
+            linkedlist l1 = new linkedlist();
 
+            l1.addFirst(6);
+            l1.addLast(5);
+            l1.addLast(4);
+            l1.addLast(3);
+            l1.addLast(2);
+            l1.addLast(1);
+            l1.addLast(0);
 
+            l1.printList();
+            System.out.println();
+            l1.addFirst(7);
+            l1.printList();
 
+            l1.insertatpos(3,8);
+            l1.insertatpos(1,10);
+            l1.insertatpos(11,69);
+            l1.printList();
+            System.out.println("Data at pos 8 : "+l1.getAt(8));
+            l1.addLastHead(12);
+            l1.printList();
+            System.out.println(l1.head.data+" "+l1.tail.data);
+            l1.deleteatPos(3);
+            l1.printList();
+            l1.deleteatPos(1);
+            l1.printList();
+            System.out.println(l1.tail.data);
+            System.out.println(l1.head.data);
+            l1.pointer(2);
+        }
 }
