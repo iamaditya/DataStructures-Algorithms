@@ -177,3 +177,54 @@ public class linkedlist {
 
         }
 }
+
+
+// intersection of two linked list
+class ListNode {
+      int val;
+      ListNode next;
+      ListNode(int x) {
+          val = x;
+          next = null;
+     }
+  }
+  class Solution {
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        ListNode tempA = headA;
+        ListNode tempB = headB;
+
+        int lenA =0,lenB = 0;
+
+        while(tempA!=null){
+            tempA = tempA.next;
+            lenA++;
+        }
+        while(tempB!=null){
+            tempB = tempB.next;
+            lenB++;
+        }
+        tempA = headA;
+        tempB = headB;
+
+        if(lenA>lenB){
+            int steps = lenA-lenB;
+
+            for(int i=1;i<=steps;i++){
+                tempA = tempA.next;
+            }
+        }else{
+            int steps = lenB-lenA;
+
+            for(int i=1;i<=steps;i++){
+                tempB = tempB.next;
+            }
+        }
+
+        while(tempA!=tempB){
+            tempA = tempA.next;
+            tempB = tempB.next;
+        }
+        return tempA;
+
+    }
+}
