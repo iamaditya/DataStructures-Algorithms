@@ -85,7 +85,10 @@ public class doublyLinkedList {
         for (int i=1;i<ind-1;i++){
             temp = temp.next;
         }
-
+        if(temp.next.next == null){
+            temp.next = null;
+            return;
+        }
         temp.next = temp.next.next;
         temp.next.prev = temp;
     }
@@ -129,8 +132,8 @@ public class doublyLinkedList {
         System.out.println();
 
 
-        deleteAt(5,a);
-        printRev(t);
+        deleteAt(10,a);
+        printRev(f);
         printList(a);
     }
 }
