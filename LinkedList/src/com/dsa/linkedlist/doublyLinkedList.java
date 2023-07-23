@@ -63,6 +63,35 @@ public class doublyLinkedList {
 
         return temp;
     }
+
+    static void insertAT(int ind, int data, Node head){
+        Node cur = head;
+        Node temp = new Node(data);
+
+        for(int i=1;i<ind-1;i++){
+            cur = cur.next;
+        }
+
+        temp.prev = cur.next.prev;
+        temp.next = cur.next;
+
+        cur.next.prev = temp;
+        cur.next = temp;
+    }
+
+    static void deleteAt(int ind, Node head){
+        Node temp = head;
+
+        for (int i=1;i<ind-1;i++){
+            temp = temp.next;
+        }
+        if(temp.next.next == null){
+            temp.next = null;
+            return;
+        }
+        temp.next = temp.next.next;
+        temp.next.prev = temp;
+    }
     public static void main(String[] args) {
 //         5 - 4 - 8 - 2 - 1 - 3
         Node a = new Node(5);
@@ -93,6 +122,18 @@ public class doublyLinkedList {
 
         Node t  = insertTail(70,f);
         printList(a);
+//        printRev(t);
+
+        System.out.println();
+        insertAT(3,6,a);
+        printList(a);
         printRev(t);
+        System.out.println();
+        System.out.println();
+
+
+        deleteAt(10,a);
+        printRev(f);
+        printList(a);
     }
 }
