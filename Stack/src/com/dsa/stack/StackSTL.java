@@ -29,8 +29,44 @@ public class StackSTL {
             System.out.print(arr[y]+" ");
             st.push(arr[y]);
         }
-        System.out.print("]");
+        System.out.println("]");
 
+    }
+
+    static void stackRevRec(Stack<Integer> st){
+
+        if(st.size()==0) return;
+        int top = st.pop();
+
+        System.out.print(top+" ");
+        stackRevRec(st);
+        st.push(top);
+    }
+    static void stackRec(Stack<Integer> st){
+
+        if(st.size()==0) return;
+        int top = st.pop();
+//
+        stackRec(st);
+        st.push(top);
+        System.out.print(top+" ");
+    }
+    static void addbottom(Stack<Integer> st , int x){
+        if(st.size() == 0){
+            st.push(x);
+            return;
+        }
+
+        int top = st.pop();
+        addbottom(st,x);
+        st.push(top);
+
+    }
+    static void reverseme(Stack<Integer> st){
+            if(st.size() == 0) return;
+            int top = st.pop();
+            reverseme(st);
+            addbottom(st,top);
     }
 
     public static void main(String[] args) {
@@ -67,5 +103,13 @@ public class StackSTL {
 
         System.out.println("MANUAL PRINTING : :");
         printStack(st);
+        System.out.println("Stack Reverse using Recursion");
+        stackRevRec(st);
+        System.out.println("\nStack using Recursion");
+        stackRec(st);
+        System.out.println();
+        reverseme(st);
+        System.out.println("\nREVERSE STACK USING RECURSION");
+        System.out.println(st);
     }
 }
