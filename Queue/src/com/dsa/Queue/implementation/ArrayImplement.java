@@ -31,6 +31,17 @@ package com.dsa.Queue.implementation;
         size--;
         return data;
     }
+    public void display(){
+
+        if(size == 0){
+            System.out.println("QUEUE is Empty");
+            return;
+        }
+        for(int i = f;i<=r;i++){
+            System.out.print(arr[i]+" ");
+        }
+        System.out.println();
+    }
 
     public int peek(){
         if(f == -1){
@@ -42,6 +53,17 @@ package com.dsa.Queue.implementation;
 }
 public class ArrayImplement {
     public static void main(String[] args) {
-
+        Queue q = new Queue();
+        q.display();
+        q.add(5);
+        q.add(4);
+        q.add(3);
+        q.add(2);
+        q.add(1);
+        q.display();
+        q.remove();
+        q.display();
+        System.out.println(q.size);
+        System.out.println(q.peek());
     }
 }
