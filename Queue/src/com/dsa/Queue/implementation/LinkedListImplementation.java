@@ -61,6 +61,7 @@ public class LinkedListImplementation {
             }
             return head.data;
         }
+        // temp push added 
 
     }
     public static void main(String[] args) {
