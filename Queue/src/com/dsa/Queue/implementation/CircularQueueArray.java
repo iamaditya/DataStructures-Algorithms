@@ -42,6 +42,10 @@ public class CircularQueueArray {
             }
 
         }
+
+        public int peek(){
+            return arr[front];
+        }
     }
     public static void main(String[] args) throws Exception{
     cQueue c1 = new cQueue();
@@ -52,6 +56,7 @@ public class CircularQueueArray {
     c1.add(2);
     c1.remove();
     c1.add(3);
+        System.out.println(c1.peek());
 
 
     }
