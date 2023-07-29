@@ -43,21 +43,34 @@ public class CircularQueueArray {
 
         }
 
-        public int peek(){
+        public int peek() throws Exception{
+            if(front == -1  && rear == -1){
+                throw new Exception("QUEUE IS EMPTY");
+            }
             return arr[front];
         }
+        public void display() throws Exception{
+            if(front<rear){
+                for(int i = front; i<= rear; i++){
+                    System.out.print(arr[i]+" ");
+                }
+            }else if(front>rear){
+                for(int i = front; i<=arr.length-1;i++){
+                    System.out.print(arr[i]+ " ");
+                }
+                for (int i=0;i<=rear;i++){
+                    System.out.print(arr[i]+" ");
+                }
+            }else{
+                throw new Exception("Queue is EMPTY");
+            }
+        }
+
     }
     public static void main(String[] args) throws Exception{
-    cQueue c1 = new cQueue();
-    c1.add(5);
-    c1.add(4);
-    c1.add(3);
-    c1.add(3);
-    c1.add(2);
-    c1.remove();
-    c1.add(3);
+        cQueue c1 = new cQueue();
+
         System.out.println(c1.peek());
-
-
+        c1.display();
     }
 }
