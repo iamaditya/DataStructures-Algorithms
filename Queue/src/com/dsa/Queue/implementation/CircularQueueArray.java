@@ -1,14 +1,12 @@
 package com.dsa.Queue.implementation;
 
-import java.util.concurrent.ExecutionException;
 
 public class CircularQueueArray {
     public static class cQueue{
-        int front = -1;
-        int rear = -1;
-
-        int size = 0;
-        int[] arr = new int[5];
+        private int front = -1;
+        private int rear = -1;
+        private int size = 0;
+        private int[] arr = new int[5];
 
         public void add(int data) throws Exception{
             if(size == arr.length){
@@ -64,13 +62,25 @@ public class CircularQueueArray {
             }else{
                 throw new Exception("Queue is EMPTY");
             }
+
+            System.out.println();
         }
 
     }
     public static void main(String[] args) throws Exception{
         cQueue c1 = new cQueue();
 
-        System.out.println(c1.peek());
+        c1.add(5);
+        c1.add(4);
+        c1.add(3);
+        c1.add(2);
+        c1.display();
+        c1.remove();
+        c1.remove();
+        c1.display();
+        c1.add(6);
+        c1.add(7);
+        c1.add(8);
         c1.display();
     }
 }
